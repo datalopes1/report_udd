@@ -16,9 +16,9 @@ def load_data(file_path: str, origem: str):
     """
     Carrega os dados em formato .JSON e adiciona metadados
 
-        Args:
-        - file_path(str): Caminho do arquivo .JSON
-        - origem(str): Site de origem dos dados
+    Args:
+        - file_path(str) - Caminho do arquivo .JSON
+        - origem(str) - Site de origem dos dados
     """
     try:
         logging.info(f"Inicando o carregamento de '{file_path}'.")
@@ -41,7 +41,7 @@ if __name__ == "__main__":
 
     data = pd.concat(dfs, ignore_index=True)
 
-    conn = sqlite3.connect("data/database.db")
+    conn = sqlite3.connect("data/db_imoveis.db")
     logging.info("Iniciando a ingestão de dados.")
     data.to_sql("raw_imoveis", conn, if_exists='append', index=False)
     logging.info("Ingestão de dados concluída.")
